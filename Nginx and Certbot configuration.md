@@ -5,7 +5,7 @@
 Install the prerequisites:
 
 ```sh
-sudo apt install curl gnupg2 ca-certificates lsb-release ubuntu-keyring
+$ sudo apt install curl gnupg2 ca-certificates lsb-release ubuntu-keyring
 ```
 
 Import an official nginx signing key so apt could verify the packages authenticity. Fetch the key:
