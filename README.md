@@ -1,4 +1,4 @@
-# How to bind EC2 Elastic IP to Domain
+# How to bind Public IPv4 of an Ubuntu server to Domain
 
 ## Install nginx with above commands
 
