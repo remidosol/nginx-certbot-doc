@@ -72,11 +72,11 @@ include /etc/nginx/sites-enabled/*;
 ...
 ```
 
-Create a file with full domain (e.g. api.linqiapp.com) in `/etc/nginx/sites-available/`, paste this and save it.
+Create a file with full domain (e.g. api.example.com) in `/etc/nginx/sites-available/`, paste this and save it.
 
 ```conf
 server {
-    server_name api.linqiapp.com;
+    server_name api.example.com;
 
  location / {
   proxy_pass http://localhost:3333;
@@ -99,7 +99,7 @@ server {
 Then run above command to create a conf for /sites-enabled folder:
 
 ```sh
-$ ln -s /etc/nginx/sites-available/api.linqiapp.com /etc/nginx/sites-enabled/api.linqiapp.com
+$ ln -s /etc/nginx/sites-available/api.example.com /etc/nginx/sites-enabled/api.example.com
 ```
 
 And check configs with above command:
@@ -135,6 +135,6 @@ Create a record:
 ```
 Type: A
 IPv4 Address: your-server-public-ip
-TTL: 14400
-Name: your.domain.with.subdomain
+TTL: 14400 (default)
+Name: api.example.com
 ```
