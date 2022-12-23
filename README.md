@@ -18,7 +18,7 @@ $ curl https://nginx.org/keys/nginx_signing.key | gpg --dearmor \
 Verify that the downloaded file contains the proper key:
 
 ```sh
-gpg --dry-run --quiet --no-keyring --import --import-options import-show /usr/share/keyrings/nginx-archive-keyring.gpg
+$ gpg --dry-run --quiet --no-keyring --import --import-options import-show /usr/share/keyrings/nginx-archive-keyring.gpg
 ```
 
 The output should contain the full fingerprint 573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62 as follows:
@@ -56,8 +56,8 @@ $ echo -e "Package: *\nPin: origin nginx.org\nPin: release o=nginx\nPin-Priority
 To install nginx, run the following commands:
 
 ```sh
-sudo apt update
-sudo apt install nginx
+$ sudo apt update
+$ sudo apt install nginx
 ```
 
 <hr>
@@ -67,9 +67,9 @@ sudo apt install nginx
 Will be added to `/etc/nginx/nginx.conf` after the line of `sites-enabled`:
 
 ```conf
-#...
+...
 include /etc/nginx/sites-enabled/*;
-#...
+...
 ```
 
 Create a file with full domain (e.g. api.linqiapp.com) in `/etc/nginx/sites-available/`, paste this and save it.
@@ -99,13 +99,13 @@ server {
 Then run above command to create a conf for /sites-enabled folder:
 
 ```sh
-ln -s /etc/nginx/sites-available/api.linqiapp.com /etc/nginx/sites-enabled/api.linqiapp.com
+$ ln -s /etc/nginx/sites-available/api.linqiapp.com /etc/nginx/sites-enabled/api.linqiapp.com
 ```
 
 And check configs with above command:
 
 ```sh
-sudo nginx -t
+$ sudo nginx -t
 ```
 
 <hr>
@@ -115,17 +115,17 @@ sudo nginx -t
 Add the Certbot PPA to list of repositories and install Certbot with the commands below:
 
 ```sh
-sudo apt-get install software-properties-common
-sudo add-apt-repository universe
-sudo add-apt-repository ppa:certbot/certbot
-sudo apt-get update
-sudo apt-get install certbot python3-certbot-nginx
+$ sudo apt-get install software-properties-common
+$ sudo add-apt-repository universe
+$ sudo add-apt-repository ppa:certbot/certbot
+$ sudo apt-get update
+$ sudo apt-get install certbot python3-certbot-nginx
 ```
 
 Then if nginx configuration check is success, run this command for the domain you specified to create free ssl certificate:
 
 ```sh
-sudo certbot --nginx
+$ sudo certbot --nginx
 ```
 
 ## Arrangements on Domain DNS
