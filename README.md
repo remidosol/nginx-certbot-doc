@@ -1,4 +1,4 @@
-# How to bind Public IPv4 of an Ubuntu server to Domain
+# How to bind Public IPv4 of an Ubuntu server to a domain
 
 **Note:** The related ports of ubuntu server must be open for outbound access. (e.g.: If you're using a EC2 instance, you should edit your security group to manage access that comes from outbound/inbound.)
 
