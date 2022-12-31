@@ -1,6 +1,10 @@
 # How to bind Public IPv4 of an Ubuntu server to Domain
 
+**Note:** The related ports of ubuntu server must be open for outbound access. (e.g.: If you're using a EC2 instance, you should edit your security group to manage access that comes from outbound/inbound.)
+
 ## Install nginx with above commands
+
+[`Up to date source`](https://nginx.org/en/linux_packages.html#Ubuntu)
 
 Install the prerequisites:
 
@@ -64,7 +68,7 @@ $ sudo apt install nginx
 
 ## Nginx Configuration
 
-Will be added to `/etc/nginx/nginx.conf` after the line of `sites-enabled`:
+Will be added to `/etc/nginx/nginx.conf` after the line of `include /etc/nginx/conf.d/*.conf;`:
 
 ```conf
 ...
@@ -79,7 +83,7 @@ server {
     server_name api.example.com;
 
  location / {
-  proxy_pass http://localhost:3333;
+  proxy_pass http://localhost:3333; # your api url that's running on server
   proxy_http_version 1.1;
   proxy_set_header Upgrade $http_upgrade;
   proxy_set_header Connection "Upgrade";
@@ -96,13 +100,13 @@ server {
 }
 ```
 
-Then run above command to create a conf for /sites-enabled folder:
+Then run below command to create a symlink to point `sites-available/api.example.com` file from `/sites-enabled` folder:
 
 ```sh
 $ ln -s /etc/nginx/sites-available/api.example.com /etc/nginx/sites-enabled/api.example.com
 ```
 
-And check configs with above command:
+And check configs with below command:
 
 ```sh
 $ sudo nginx -t
@@ -122,7 +126,7 @@ $ sudo apt-get update
 $ sudo apt-get install certbot python3-certbot-nginx
 ```
 
-Then if nginx configuration check is success, run this command for the domain you specified to create free ssl certificate:
+Then if nginx configuration check is success, run the below command for the domain you specified to create free ssl certificate:
 
 ```sh
 $ sudo certbot --nginx
